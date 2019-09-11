@@ -36,7 +36,7 @@ var KTDatatablesSearchOptionsAdvancedSearch = function() {
 			searchDelay: 500,
 			processing: true,
 			serverSide: true,
-			ajax: springDataTablesTranslator('/order/search', columns, null),
+			ajax: springDataTablesTranslator('/order/search', columns, getSearchParam),
 			columns: columns,
 
 			initComplete: function() {
@@ -95,6 +95,16 @@ var KTDatatablesSearchOptionsAdvancedSearch = function() {
 				}
 			],
 		});
+
+		function getSearchParam() {
+			let country = $('#in-country').val();
+			let agent = $('#in-agent').val();
+			let shipDateFrom = $('#in-shipDate-from').datepicker('getUTCDate');
+			shipDateFrom = shipDateFrom ? shipDateFrom.getTime() : null;
+			let shipDateTo = $('#in-shipDate-to').datepicker('getUTCDate');
+			shipDateTo = shipDateTo ? shipDateTo.getTime() : null;
+			return {country, agent, shipDateFrom, shipDateTo};
+		}
 
 		var filter = function() {
 			var val = $.fn.dataTable.util.escapeRegex($(this).val());
