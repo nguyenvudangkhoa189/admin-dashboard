@@ -7,6 +7,17 @@ var KTDatatablesSearchOptionsAdvancedSearch = function() {
 
 	var initTable1 = function() {
 		// begin first table
+		let columns = [
+			{data: 'recordID'},
+			{data: 'orderID'},
+			{data: 'country'},
+			{data: 'shipCity'},
+			{data: 'companyAgent'},
+			{data: 'shipDate'},
+			{data: 'status'},
+			{data: 'type'},
+			{data: 'Actions', responsivePriority: -1},
+		];
 		var table = $('#kt_table_1').DataTable({
 			responsive: true,
 			// Pagination settings
@@ -25,18 +36,8 @@ var KTDatatablesSearchOptionsAdvancedSearch = function() {
 			searchDelay: 500,
 			processing: true,
 			serverSide: true,
-			ajax: springDataTablesTranslator('/order/search', null),
-			columns: [
-				{data: 'recordID'},
-				{data: 'orderID'},
-				{data: 'country'},
-				{data: 'shipCity'},
-				{data: 'companyAgent'},
-				{data: 'shipDate'},
-				{data: 'status'},
-				{data: 'type'},
-				{data: 'Actions', responsivePriority: -1},
-			],
+			ajax: springDataTablesTranslator('/order/search', columns, null),
+			columns: columns,
 
 			initComplete: function() {
 				this.api().columns().every(function() {
