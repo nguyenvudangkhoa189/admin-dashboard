@@ -26,7 +26,7 @@ var KTDatatablesSearchOptionsAdvancedSearch = function() {
 			processing: true,
 			serverSide: true,
 			ajax: {
-				url: 'https://keenthemes.com/metronic/themes/themes/metronic/dist/preview/inc/api/datatables/demos/server.php',
+				url: '/order/search',
 				type: 'POST',
 				data: {
 					// parameters for custom backend script demo
@@ -34,16 +34,17 @@ var KTDatatablesSearchOptionsAdvancedSearch = function() {
 						'RecordID', 'OrderID', 'Country', 'ShipCity', 'CompanyAgent',
 						'ShipDate', 'Status', 'Type', 'Actions',],
 				},
+				dataSrc:'content'
 			},
 			columns: [
-				{data: 'RecordID'},
-				{data: 'OrderID'},
-				{data: 'Country'},
-				{data: 'ShipCity'},
-				{data: 'CompanyAgent'},
-				{data: 'ShipDate'},
-				{data: 'Status'},
-				{data: 'Type'},
+				{data: 'recordID'},
+				{data: 'orderID'},
+				{data: 'country'},
+				{data: 'shipCity'},
+				{data: 'companyAgent'},
+				{data: 'shipDate'},
+				{data: 'status'},
+				{data: 'type'},
 				{data: 'Actions', responsivePriority: -1},
 			],
 
