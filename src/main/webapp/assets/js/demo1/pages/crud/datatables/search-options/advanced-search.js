@@ -49,6 +49,33 @@ var KTDatatablesSearchOptionsAdvancedSearch = function() {
 								$('.kt-input[data-col-index="2"]').append('<option value="' + d + '">' + d + '</option>');
 							});
 							break;
+
+						case 'Status':
+							var status = {
+								'Pending': {'title': 'Pending', 'class': 'kt-badge--brand'},
+								'Delivered': {'title': 'Delivered', 'class': ' kt-badge--danger'},
+								'Canceled': {'title': 'Canceled', 'class': ' kt-badge--primary'},
+								'Success': {'title': 'Success', 'class': ' kt-badge--success'},
+								'Info': {'title': 'Info', 'class': ' kt-badge--info'},
+								'Danger': {'title': 'Danger', 'class': ' kt-badge--danger'},
+								'Warning': {'title': 'Warning', 'class': ' kt-badge--warning'},
+							};
+							column.data().unique().sort().each(function(d, j) {
+								console.debug('statud[d]', d);
+								$('.kt-input[data-col-index="6"]').append('<option value="' + d + '">' + status[d].title + '</option>');
+							});
+							break;
+
+						case 'Type':
+							var status = {
+								'Online': {'title': 'Online', 'state': 'danger'},
+								'Retail': {'title': 'Retail', 'state': 'primary'},
+								'Direct': {'title': 'Direct', 'state': 'success'},
+							};
+							column.data().unique().sort().each(function(d, j) {
+								$('.kt-input[data-col-index="7"]').append('<option value="' + d + '">' + status[d].title + '</option>');
+							});
+							break;
 					}
 				});
 			},
@@ -79,18 +106,33 @@ var KTDatatablesSearchOptionsAdvancedSearch = function() {
 					targets: 6,
 					render: function(data, type, full, meta) {
 						var status = {
-							1: {'title': 'Pending', 'class': 'kt-badge--brand'},
-							2: {'title': 'Delivered', 'class': ' kt-badge--danger'},
-							3: {'title': 'Canceled', 'class': ' kt-badge--primary'},
-							4: {'title': 'Success', 'class': ' kt-badge--success'},
-							5: {'title': 'Info', 'class': ' kt-badge--info'},
-							6: {'title': 'Danger', 'class': ' kt-badge--danger'},
-							7: {'title': 'Warning', 'class': ' kt-badge--warning'},
+							'Pending': {'title': 'Pending', 'class': 'kt-badge--brand'},
+							'Delivered': {'title': 'Delivered', 'class': ' kt-badge--danger'},
+							'Canceled': {'title': 'Canceled', 'class': ' kt-badge--primary'},
+							'Success': {'title': 'Success', 'class': ' kt-badge--success'},
+							'Info': {'title': 'Info', 'class': ' kt-badge--info'},
+							'Danger': {'title': 'Danger', 'class': ' kt-badge--danger'},
+							'Warning': {'title': 'Warning', 'class': ' kt-badge--warning'},
 						};
 						if (typeof status[data] === 'undefined') {
 							return data;
 						}
 						return '<span class="kt-badge ' + status[data].class + ' kt-badge--inline kt-badge--pill">' + status[data].title + '</span>';
+					},
+				},
+				{
+					targets: 7,
+					render: function(data, type, full, meta) {
+						var status = {
+							'Online': {'title': 'Online', 'state': 'danger'},
+							'Retail': {'title': 'Retail', 'state': 'primary'},
+							'Direct': {'title': 'Direct', 'state': 'success'},
+						};
+						if (typeof status[data] === 'undefined') {
+							return data;
+						}
+						return '<span class="kt-badge kt-badge--' + status[data].state + ' kt-badge--dot"></span>&nbsp;' +
+							'<span class="kt-font-bold kt-font-' + status[data].state + '">' + status[data].title + '</span>';
 					},
 				}
 			],

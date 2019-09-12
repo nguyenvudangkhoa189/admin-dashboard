@@ -1,5 +1,6 @@
 function springDataTablesTranslator(url, columns, paramSupplier) {
     return function (data, callback, settings) {
+        console.debug('dt data', data);
         let sort = data.order.length === 0 ? null :
             columns[data.order[0].column].data // sort column name
             + ',' + data.order[0].dir; // sort direction
