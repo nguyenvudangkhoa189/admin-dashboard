@@ -35,12 +35,20 @@ public class OrderCriteria {
         this.shipDateFrom = shipDateFrom;
     }
 
+    public void setShipDateFrom(Long shipDateFrom) {
+        this.shipDateFrom = shipDateFrom != null ? new Date(shipDateFrom) : null;
+    }
+
     public Date getShipDateTo() {
         return shipDateTo;
     }
 
     public void setShipDateTo(Date shipDateTo) {
         this.shipDateTo = shipDateTo;
+    }
+
+    public void setShipDateTo(Long shipDateTo) {
+        this.shipDateTo = shipDateTo != null ? new Date(shipDateTo) : null;
     }
 
     public String getStatus() {

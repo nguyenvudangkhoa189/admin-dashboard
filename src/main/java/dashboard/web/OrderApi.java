@@ -12,9 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Date;
-import java.util.Optional;
-
 @RestController
 @RequestMapping("/order")
 public class OrderApi {
@@ -36,6 +33,9 @@ public class OrderApi {
         return orderQueryRepository.search(criteria.toCriteria(), pageable);
     }
 
+    /**
+     *
+     */
     static class OrderCriteriaForm {
 
         private String country;
@@ -45,12 +45,12 @@ public class OrderApi {
         private String status;
         private String type;
 
-        public OrderCriteria toCriteria() {
+        OrderCriteria toCriteria() {
             OrderCriteria criteria = new OrderCriteria();
             criteria.setCountry(country);
             criteria.setAgent(agent);
-            criteria.setShipDateFrom(Optional.ofNullable(shipDateFrom).map(Date::new).orElse(null));
-            criteria.setShipDateTo(Optional.ofNullable(shipDateTo).map(Date::new).orElse(null));
+            criteria.setShipDateFrom(shipDateFrom);
+            criteria.setShipDateTo(shipDateTo);
             criteria.setStatus(status);
             criteria.setType(type);
             return criteria;
