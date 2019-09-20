@@ -22,10 +22,16 @@ public class ProductController {
         return "product/list";
     }
 
-    @GetMapping(params = "action=form")
+    @GetMapping("/create")
     public String create(Model model) {
         model.addAttribute("product", new Product());
         return "product/form";
+    }
+
+    @PostMapping("/create")
+    public String create(Product product) {
+        productRepository.save(product);
+        return "redirect:/product/" + product.getId();
     }
 
     @GetMapping("/{id}")
@@ -34,14 +40,14 @@ public class ProductController {
         return "product/view";
     }
 
-    @GetMapping(value = "/{id}", params = "action=form")
+    @GetMapping("/{id}/update")
     public String update(@PathVariable long id, Model model) {
         model.addAttribute("product", productRepository.findById(id).orElse(null));
         return "product/form";
     }
 
-    @PostMapping(value = "/{id}", params = "action=form")
-    public String update(@PathVariable long id, Product product, Model model) {
+    @PostMapping("/{id}/update")
+    public String update(@PathVariable long id, Product product) {
         productRepository.save(product);
         return "redirect:/product/" + product.getId();
     }
