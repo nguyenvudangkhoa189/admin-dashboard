@@ -12,10 +12,17 @@
 </head>
 <body>
 <main class="container" th:object="${product}">
+    <ul class="nav">
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{/product}">Product</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{/product/__*{id}__/update}">Update</a>
+        </li>
+    </ul>
     <h1 th:text="*{name}">Hello, world!</h1>
     <p class="lead" th:text="*{summary}"></p>
     <div th:utext="*{detail}"></div>
-    <p><a href="#" th:href="@{/product/__*{id}__/update}">Update</a></p>
 </main>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
