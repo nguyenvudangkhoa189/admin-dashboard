@@ -498,3 +498,7 @@ insert into orders (RecordID, OrderID, Country, ShipCity, CompanyAgent, ShipDate
 insert into orders (RecordID, OrderID, Country, ShipCity, CompanyAgent, ShipDate, Status, Type) values (498, 498, 'Indonesia', 'Kadugede', 'Dabtype', '2018-09-01', 'Delivered', 'Online');
 insert into orders (RecordID, OrderID, Country, ShipCity, CompanyAgent, ShipDate, Status, Type) values (499, 499, 'Ukraine', 'Kharkiv', 'Topicware', '2018-08-01', 'Warning', 'Retail');
 insert into orders (RecordID, OrderID, Country, ShipCity, CompanyAgent, ShipDate, Status, Type) values (500, 500, 'Panama', 'Gómez', 'Yodo', '2018-08-29', 'Danger', 'Online');
+
+
+INSERT INTO product(id, name, summary, detail) VALUES (1, 'iPhone', 'Apple mobile device', 'The iPhone is a line of smartphones designed and marketed by Apple Inc. All generations of the iPhone use Apple''s iOS mobile operating system software. The first-generation iPhone was released on June 29, 2007, and multiple new hardware iterations with new iOS releases have been released since.');
+INSERT INTO product(id, name, summary, detail) VALUES (2, 'XA1 Ultra', 'Smartphone, tablet, phablet', 'Xperia is the brand name of smartphones and tablets from Sony Mobile. The name Xperia is derived from the word "experience", and was first used in the Xperia X1 tagline, "I Xperia the best".');
