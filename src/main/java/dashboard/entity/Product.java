@@ -1,4 +1,4 @@
-package dashboard.dao.model;
+package dashboard.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

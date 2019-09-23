@@ -1,8 +1,8 @@
 package dashboard.web;
 
-import dashboard.dao.model.OrderModel;
-import dashboard.dao.repository.OrderQueryRepository;
-import dashboard.dao.repository.OrderRepository;
+import dashboard.entity.Order;
+import dashboard.repository.OrderQueryRepository;
+import dashboard.repository.OrderRepository;
 import dashboard.service.OrderCriteria;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,7 +27,7 @@ public class OrderApi {
     }
 
     @PostMapping("/search")
-    public Page<OrderModel> search(OrderCriteriaForm criteria, Pageable pageable) {
+    public Page<Order> search(OrderCriteriaForm criteria, Pageable pageable) {
         logger.debug("criteria: {}", criteria);
         logger.debug("pagable: {}", pageable);
         return orderQueryRepository.search(criteria.toCriteria(), pageable);

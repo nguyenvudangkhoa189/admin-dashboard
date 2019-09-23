@@ -1,6 +1,6 @@
-package dashboard.dao.repository;
+package dashboard.repository;
 
-import dashboard.dao.model.OrderModel;
+import dashboard.entity.Order;
 import dashboard.service.OrderCriteria;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -23,14 +23,14 @@ class OrderQueryRepositoryImpl implements OrderQueryRepository {
     }
 
     @Override
-    public Page<OrderModel> search(OrderCriteria criteria, Pageable pageable) {
+    public Page<Order> search(OrderCriteria criteria, Pageable pageable) {
         return orderRepository.findAll(new OrderSpecification(criteria), pageable);
     }
 
     /**
      *
      */
-    static class OrderSpecification implements Specification<OrderModel> {
+    static class OrderSpecification implements Specification<Order> {
 
         private final OrderCriteria criteria;
 
@@ -39,7 +39,7 @@ class OrderQueryRepositoryImpl implements OrderQueryRepository {
         }
 
         @Override
-        public Predicate toPredicate(Root<OrderModel> root, CriteriaQuery<?> query, CriteriaBuilder builder) {
+        public Predicate toPredicate(Root<Order> root, CriteriaQuery<?> query, CriteriaBuilder builder) {
             List<Predicate> predicates = new ArrayList<>();
 
             addPredicateCountry(root, builder, predicates);
@@ -49,21 +49,21 @@ class OrderQueryRepositoryImpl implements OrderQueryRepository {
             return builder.and(predicates.toArray(new Predicate[]{}));
         }
 
-        private void addPredicateCountry(Root<OrderModel> root, CriteriaBuilder builder, List<Predicate> predicates) {
+        private void addPredicateCountry(Root<Order> root, CriteriaBuilder builder, List<Predicate> predicates) {
             if (StringUtils.hasText(criteria.getCountry())) {
                 Predicate predicate = builder.equal(root.get("country"), criteria.getCountry());
                 predicates.add(predicate);
             }
         }
 
-        private void addPredicateAgent(Root<OrderModel> root, CriteriaBuilder builder, List<Predicate> predicates) {
+        private void addPredicateAgent(Root<Order> root, CriteriaBuilder builder, List<Predicate> predicates) {
             if (StringUtils.hasText(criteria.getAgent())) {
                 Predicate predicate = builder.like(root.get("companyAgent"), criteria.getAgent() + "%");
                 predicates.add(predicate);
             }
         }
 
-        private void addPredicateShipDate(Root<OrderModel> root, CriteriaBuilder builder, List<Predicate> predicates) {
+        private void addPredicateShipDate(Root<Order> root, CriteriaBuilder builder, List<Predicate> predicates) {
             Date shipDateFrom = criteria.getShipDateFrom();
             Date shipDateTo = criteria.getShipDateTo();
             if (shipDateFrom != null || shipDateTo != null) {

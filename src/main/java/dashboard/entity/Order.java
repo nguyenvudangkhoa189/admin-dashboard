@@ -1,4 +1,4 @@
-package dashboard.dao.model;
+package dashboard.entity;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -16,7 +16,7 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "orders")
 @NamedQuery(name = "OrderModel.findAll", query = "SELECT u FROM OrderModel u")
-public class OrderModel implements Serializable {
+public class Order implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -46,7 +46,7 @@ public class OrderModel implements Serializable {
     @Column(name = "TYPE")
     private String type;
 
-    public OrderModel() {
+    public Order() {
     }
 
     public int getRecordID() {

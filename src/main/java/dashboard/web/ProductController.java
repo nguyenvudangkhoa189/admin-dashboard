@@ -1,7 +1,7 @@
 package dashboard.web;
 
-import dashboard.dao.model.Product;
-import dashboard.dao.repository.ProductRepository;
+import dashboard.entity.Product;
+import dashboard.repository.ProductRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
