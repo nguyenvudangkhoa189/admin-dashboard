@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+
+    <style>
+        .board {
+            display: grid;
+            grid-gap: 10px;
+        }
+
+        .box {
+            border: 1px black dashed;
+        }
+    </style>
+</head>
+<body>
+<main class="container">
+    <div class="board">
+        <div class="box"
+             draggable="true"
+             th:id="${c.id}"
+             th:data-x="${c.x}"
+             th:data-y="${c.y}"
+             th:data-w="${c.w}"
+             th:data-h="${c.h}"
+             th:each="c: ${cat}">
+            <h1 th:text="${c.name}"></h1>
+            <p th:text="${c.summary}"></p>
+        </div>
+    </div>
+</main>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+<script>
+    let boxes = $('.box');
+    boxes.each(function (i, el) {
+        let x = Number(el.dataset.x),
+            y = Number(el.dataset.y),
+            w = Number(el.dataset.w),
+            h = Number(el.dataset.h);
+        el.style.gridColumnStart = x;
+        el.style.gridColumnEnd = x + w;
+        el.style.gridRowStart = y;
+        el.style.gridRowEnd = y + h;
+
+
+        el.ondragstart = (ev) => {
+            console.log('on drag start');
+            ev.dataTransfer.setData('text/id', ev.target.id);
+            ev.dataTransfer.dropEffect = 'move';
+        };
+        el.ondrag = () => {
+            console.log('on drag');
+        };
+        el.ondragenter = () => {
+            console.log('on drag enter');
+        };
+        el.ondragover = (ev) => {
+            ev.preventDefault();
+            console.log('on drag over');
+            ev.dataTransfer.dropEffect = 'move';
+        };
+        el.ondragexit = () => {
+            console.log('on drag exit');
+        };
+        el.ondragleave = () => {
+            console.log('on drag leave');
+        };
+        el.ondrop = (ev) => {
+            ev.preventDefault();
+            console.log('on drop');
+            let data = ev.dataTransfer.getData('text/id');
+            console.log('id', data);
+            ev.target.appendChild(document.getElementById(data));
+        };
+        el.ondragend = () => console.log('on drag end');
+    })
+</script>
+</body>
+</html>

@@ -17,3 +17,15 @@ CREATE TABLE product (
     summary VARCHAR(1023),
     detail TEXT
 );
+
+DROP TABLE IF EXISTS category;
+CREATE TABLE category (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(127),
+    summary VARCHAR(1023),
+    detail TEXT,
+    x INT,
+    y INT,
+    w INT,
+    h INT
+)

@@ -502,3 +502,11 @@ insert into orders (RecordID, OrderID, Country, ShipCity, CompanyAgent, ShipDate
 
 INSERT INTO product(id, name, summary, detail) VALUES (1, 'iPhone', 'Apple mobile device', 'The iPhone is a line of smartphones designed and marketed by Apple Inc. All generations of the iPhone use Apple''s iOS mobile operating system software. The first-generation iPhone was released on June 29, 2007, and multiple new hardware iterations with new iOS releases have been released since.');
 INSERT INTO product(id, name, summary, detail) VALUES (2, 'XA1 Ultra', 'Smartphone, tablet, phablet', 'Xperia is the brand name of smartphones and tablets from Sony Mobile. The name Xperia is derived from the word "experience", and was first used in the Xperia X1 tagline, "I Xperia the best".');
+
+INSERT INTO category(id, x, y, w, h, name, summary) VALUES (1, 1, 1, 1, 1, 'Motherboard', 'Shop for a new, fast computer motherboard at Best Buy. Find a new ATX or EATX motherboard for your desktop PC tower.');
+INSERT INTO category(id, x, y, w, h, name, summary) VALUES (2, 2, 1, 1, 1, 'CPU', 'Shop a wide selection of CPU Processors at Amazon.com. Free shipping and free returns on eligible items.');
+INSERT INTO category(id, x, y, w, h, name, summary) VALUES (3, 3, 1, 1, 1, 'Memory', 'Buy computer memory from Best Buy for your laptop or desktop. Ram computer memory can enhance your computing performance and speed.');
+INSERT INTO category(id, x, y, w, h, name, summary) VALUES (4, 1, 2, 1, 1, 'Storage', 'The hard disk drive is the main, and usually largest, data storage hardware device in a computer. The operating system, software titles, and most other files are stored in the hard disk drive.');
+INSERT INTO category(id, x, y, w, h, name, summary) VALUES (5, 2, 2, 1, 1, 'GPU', '');
+INSERT INTO category(id, x, y, w, h, name, summary) VALUES (6, 3, 2, 1, 1, 'Case', '');
+INSERT INTO category(id, x, y, w, h, name, summary) VALUES (7, 1, 3, 2, 2, 'PSU', '');
