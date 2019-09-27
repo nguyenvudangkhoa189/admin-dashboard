@@ -12,7 +12,7 @@ public class HomeController {
 
     private static Logger logger = LoggerFactory.getLogger(HomeController.class);
 
-    @RequestMapping(value = { "/", "/index2" }, method = RequestMethod.GET)
+    @RequestMapping(value = { "/", "/index2", "/a/b/c/x/y/z" }, method = RequestMethod.GET)
     public String index(Model model) {
 
         return "index";

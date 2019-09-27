@@ -36,7 +36,7 @@ var KTDatatablesSearchOptionsAdvancedSearch = function() {
 			searchDelay: 500,
 			processing: true,
 			serverSide: true,
-			ajax: springDataTablesTranslator('/order/search', columns, getSearchParam),
+			ajax: springDataTablesTranslator(document.baseURI + 'order/search', columns, getSearchParam),
 			columns: columns,
 
 			initComplete: function() {
